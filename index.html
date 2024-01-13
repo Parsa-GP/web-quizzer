@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Test Taking Website</title>
+</head>
+<body>
+    <div id="testSelection">
+        <h1>Select a Test</h1>
+        <button onclick="loadTest('math')">Math Test</button>
+        <button onclick="loadTest('history')">History Test</button>
+    </div>
+
+    <div id="testContent" style="display: none;">
+        <h1 id="testTitle"></h1>
+        <div id="questions"></div>
+        <button onclick="completeTest()">Complete Test</button>
+        <div id="finalScore" style="display: none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
