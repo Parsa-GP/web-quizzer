@@ -15,9 +15,10 @@ function loadTest(testName) {
 }
 
 function displayTest() {
-    document.getElementById('testTitle').innerText = `${currentTest} Test`;
-    document.getElementById('testSelection').style.display = 'none';
-    document.getElementById('testContent').style.display = 'block';
+    document.getElementById('header').style.display = 'none';
+    document.getElementById('test-title').innerText = `${currentTest} Test`;
+    document.getElementById('test-selection').style.display = 'none';
+    document.getElementById('test-content').style.display = 'block';
 
     // Display questions
     const questionsContainer = document.getElementById('questions');

@@ -7,19 +7,29 @@
     <title>Test Taking Website</title>
 </head>
 <body>
-    <div id="testSelection">
-        <h1>Select a Test</h1>
-        <button onclick="loadTest('math')">Math Test</button>
-        <button onclick="loadTest('history')">History Test</button>
+    <h1 id="header">Select a Test</h1>
+    <div id="test-selection">
+        <div id="math" class="test-items" onclick="loadTest('math')">
+            <img src="assets/math.svg">
+            Math Test
+        </div>
+        <div id="history" class="test-items" onclick="loadTest('history')">
+            <img src="assets/history.svg">
+            History Test
+        </div>
     </div>
 
-    <div id="testContent" style="display: none;">
-        <h1 id="testTitle"></h1>
+    <div id="test-content" style="display: none;">
+        <h1 id="test-title"></h1>
         <div id="questions"></div>
         <button onclick="completeTest()">Complete Test</button>
         <div id="finalScore" style="display: none;"></div>
     </div>
 
+    <div id="footer">
+        <hr>
+        <a href="https://github.com/parsa-gp/web-quizzer/">Code</a>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
