@@ -4,11 +4,11 @@ let answers = [];
 
 function loadTest(testName) {
     // Fetch questions for the selected test (Assuming you have JSON files for each test)
-    fetch(`tests/${testName}.json`)
+    fetch(`tests.json`)
         .then(response => response.json())
         .then(data => {
             currentTest = testName;
-            questions = data.questions;
+            questions = data[testName];
             displayTest();
         })
         .catch(error => console.error('Error fetching test data:', error));
@@ -25,9 +25,10 @@ function displayTest() {
 
     questions.forEach((question, index) => {
         const questionElement = document.createElement('div');
+        questionElement.classList = ["question"];
         questionElement.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
 
-        // Assuming options are in an array within the question object
+        // Display answer options as radio buttons
         question.options.forEach(option => {
             const radioBtn = document.createElement('input');
             radioBtn.type = 'radio';
@@ -46,29 +47,42 @@ function displayTest() {
 }
 
 function completeTest() {
-    // Collect answers
     answers = [];
-    questions.forEach((question, index) => {
-        const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selectedOption) {
-            const answer = {
-                question: index + 1,
-                selectedOption: selectedOption.value,
-                score: question.options.find(option => option.value === selectedOption.value).score
-            };
-            answers.push(answer);
+    var divs = document.querySelectorAll('.question');
+    divs.forEach(function(div) {
+        var inputs = Array.from(div.querySelectorAll('input[type="radio"]'));
+        
+        for (let i = 0; i < inputs.length; i += 3) {
+            const group = inputs.slice(i, i + 3);
+            const checkedIndex = group.findIndex(item => item.checked);
+            answers.push(checkedIndex + 1);
         }
     });
+    displayAnswers();
+}
 
-    // Calculate and display final score
-    const finalScore = calculateFinalScore();
-    displayFinalScore(finalScore);
+function displayAnswers() {
+    const answersContainer = document.getElementById('finalScore');
+    answersContainer.innerHTML = "";
+    answersContainer.style.display = "block";
+    answersContainer.innerHTML = '<h2>Your Answers:</h2>';
+
+    var i=1
+    answers.forEach(answer => {
+        const answerElement = document.createElement('p');
+        answerElement.innerHTML = `<strong>${i}</strong>: ${answer}`;
+        answersContainer.appendChild(answerElement);
+        i++
+    });
+    displayFinalScore(calculateFinalScore());
 }
 
 function calculateFinalScore() {
     let totalScore = 0;
+    var i=0
     answers.forEach(answer => {
-        totalScore += answer.score;
+        totalScore += questions[i].options[answer-1].score;
+        i++
     });
     return totalScore;
 }
