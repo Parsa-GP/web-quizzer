@@ -64,6 +64,7 @@ body > h1, #test-title {
     display: grid;
     justify-content: center;
     justify-items: center;
+    padding: 15px;
 }
 
 .test-items:hover {
@@ -72,8 +73,9 @@ body > h1, #test-title {
 }
 
 .test-items > img {
-    width: 85%;
-    height: 85%;
+    width: 20vw;
+    height: 20vw;
+    margin-bottom: 20px;
 }
 
 #test-selection {
@@ -91,6 +93,8 @@ body > h1, #test-title {
     color: white;
     margin-bottom: 10px;
     line-height: 25px;
+    display: grid;
+    justify-items: start;
 }
 
 .question > p {
@@ -99,8 +103,12 @@ body > h1, #test-title {
 
 .question > label {
     transition-duration: 0.2s;
-    margin-right: 10px;
     transform: scale(0.9);
+    border: 1px solid #499aff78;
+    padding: 10px 15px;
+    min-width: 300px;
+    background: #ffffff26;
+    font-size: large;
 }
 
 .question > label:hover {
@@ -109,7 +117,12 @@ body > h1, #test-title {
 }
 
 .question > label > input {
-    margin-right: 4px;
+    margin-right: 15px;
+    scale: 1.3;
+}
+.question > label > input[type="radio"]:checked ~ span {
+    transition-duration: 0.2s;
+    font-weight: bolder;
 }
 
 #submit {

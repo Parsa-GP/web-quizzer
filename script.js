@@ -37,9 +37,12 @@ function displayTest() {
             radioBtn.name = `q${index}`;
             radioBtn.value = option.value;
 
+            const span = document.createElement('span');
+            span.textContent = option;
+
             const label = document.createElement('label');
             label.appendChild(radioBtn);
-            label.appendChild(document.createTextNode(option));
+            label.appendChild(span);
 
             questionElement.appendChild(label);
         });
