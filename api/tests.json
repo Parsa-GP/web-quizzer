@@ -1,0 +1,57 @@
+{
+  "math": [
+    {
+      "question": "What is 2 + 2?",
+      "options": [
+        { "text": "4", "score": 2 },
+        { "text": "5", "score": 0 },
+        { "text": "6", "score": 0 }
+      ]
+    },
+    {
+      "question": "Solve for x: 3x - 7 = 11",
+      "options": [
+        { "text": "4", "score": 0 },
+        { "text": "6", "score": 2 },
+        { "text": "8", "score": 0 }
+      ]
+    },
+    {
+      "question": "What is the square root of 25?",
+      "options": [
+        { "text": "5", "score": 2 },
+        { "text": "4", "score": 0 },
+        { "text": "6", "score": 0 }
+      ]
+    }
+  ],
+
+  
+  "history": [
+    {
+      "question": "Was Cyrus the Great, great?",
+      "options": [
+        { "text": "yes", "score": 2 },
+        { "text": "no", "score": 0 },
+        { "text": "might", "score": 1 }
+      ]
+    },
+    {
+      "question": "When did the construction of the Great Wall of China begin?",
+      "options": [
+        { "text": "5th century BC", "score": 0 },
+        { "text": "7th century BC", "score": 2 },
+        { "text": "9th century BC", "score": 0 }
+      ]
+    },
+    {
+      "question": "Where did Albert Einstein live before moving to the United States?",
+      "options": [
+        { "text": "Germany", "score": 2 },
+        { "text": "Germany", "score": 2 },
+        { "text": "not Germany", "score": 0 }
+      ]
+    }
+  ]
+}
+  

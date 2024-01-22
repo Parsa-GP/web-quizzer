@@ -1,14 +1,15 @@
 let currentTest;
 let questions;
 let answers = [];
+let grade;
 
 function loadTest(testName) {
     // Fetch questions for the selected test (Assuming you have JSON files for each test)
-    fetch(`tests.json`)
+    fetch(`api/get_testdata.php?testname=${testName}`)
         .then(response => response.json())
         .then(data => {
             currentTest = testName;
-            questions = data[testName];
+            questions = data;
             displayTest();
         })
         .catch(error => console.error('Error fetching test data:', error));
@@ -27,7 +28,7 @@ function displayTest() {
     questions.forEach((question, index) => {
         const questionElement = document.createElement('div');
         questionElement.classList = ["question"];
-        questionElement.innerHTML = `<p>${index + 1}. ${question.question}</p>`;
+        questionElement.innerHTML = `<p>${index + 1}. ${question.q}</p>`;
 
         // Display answer options as radio buttons
         question.options.forEach(option => {
@@ -38,7 +39,7 @@ function displayTest() {
 
             const label = document.createElement('label');
             label.appendChild(radioBtn);
-            label.appendChild(document.createTextNode(option.text));
+            label.appendChild(document.createTextNode(option));
 
             questionElement.appendChild(label);
         });
@@ -75,21 +76,24 @@ function displayAnswers() {
         answersContainer.appendChild(answerElement);
         i++
     });
-    displayFinalScore(calculateFinalScore());
+    calculateFinalScore();
+    displayFinalScore();
 }
 
 function calculateFinalScore() {
-    let totalScore = 0;
-    var i=0
-    answers.forEach(answer => {
-        totalScore += questions[i].options[answer-1].score;
-        i++
-    });
-    return totalScore;
+    fetch(`api/get_result.php?data=${btoa(JSON.stringify(answers))}&testname=${currentTest}`)
+    .then(response => response.json())
+    .then(data => {
+        grade = data;
+        displayFinalScore();
+    })
+    .catch(error => console.error('Error fetching test data:', error));
+
+    return grade;
 }
 
-function displayFinalScore(finalScore) {
+function displayFinalScore() {
     const finalScoreElement = document.getElementById('finalScore');
-    finalScoreElement.innerText = `Your final score for the ${currentTest} Test is: ${finalScore}`;
+    finalScoreElement.innerText = `Your final score for the ${currentTest} Test is: ${grade}`;
     finalScoreElement.style.display = 'block';
 }
