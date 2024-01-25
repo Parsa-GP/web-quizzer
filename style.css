@@ -14,11 +14,14 @@ body {
     background: linear-gradient(45deg, #00327d, #4db5ff);
     background-repeat: no-repeat;
     min-height: 100vh;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
 }
 
-button {
-    margin: 5px;
-}
+button {margin: 5px;}
 
 hr {
     border: 0;
@@ -91,7 +94,7 @@ body > h1, #test-title {
 
 .question {
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     line-height: 25px;
     display: grid;
     justify-items: start;
@@ -109,6 +112,7 @@ body > h1, #test-title {
     min-width: 300px;
     background: #ffffff26;
     font-size: large;
+    border-radius: 10px;
 }
 
 .question > label:hover {

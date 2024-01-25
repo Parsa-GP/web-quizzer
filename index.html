@@ -19,7 +19,7 @@
                         const container = document.createElement('div');
                         container.id = name;
                         container.classList = ["test-items"];
-                        container.onclick = "loadTest('math')";
+                        container.setAttribute("onclick","loadTest('math')");
 
                         const img = document.createElement('img');
                         img.src = `assets/${name}.svg`;

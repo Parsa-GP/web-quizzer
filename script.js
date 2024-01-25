@@ -5,6 +5,7 @@ let grade;
 
 function loadTest(testName) {
     // Fetch questions for the selected test (Assuming you have JSON files for each test)
+    console.log(testName);
     fetch(`api/get_testdata.php?testname=${testName}`)
         .then(response => response.json())
         .then(data => {
@@ -97,6 +98,6 @@ function calculateFinalScore() {
 
 function displayFinalScore() {
     const finalScoreElement = document.getElementById('finalScore');
-    finalScoreElement.innerText = `Your final score for the ${currentTest} Test is: ${grade}`;
+    finalScoreElement.innerText = `Your final grade for the ${currentTest} Test is: ${grade}!`;
     finalScoreElement.style.display = 'block';
 }

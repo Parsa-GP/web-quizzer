@@ -5,11 +5,21 @@
     $tests = json_decode(file_get_contents("tests.json"), true)[$_GET["testname"]];
 
     $answers = json_decode(base64_decode($_GET["data"]));
-    $grade = 0;
+    $score = 0;
     $i=0;
     foreach ($answers as $answer) {
-        $grade += $tests[$i]["options"][$answers[$i]-1]["score"];
+        $score += $tests[$i]["options"][$answers[$i]-1]["score"];
         $i+=1;
     }
-    echo $grade;
+    
+    if ($score < 5) {
+        $grade = "It's fucking terrible";
+    } elseif ($score < 10) {
+        $grade = "Terrible";
+    } elseif ($score < 20) {
+        $grade = "Normal";
+    } elseif ($score > 20) {
+        $grade = "Great";
+    }
+    echo $score;
 ?>
