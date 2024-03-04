@@ -12,28 +12,28 @@
         <script>
             var tests;
             fetch("api/get_testlist.php")
-                .then(response => response.json())
-                .then(data => {
-                    const questionElement = document.getElementById('test-selection');
-                    data.forEach(name => {
-                        const container = document.createElement('div');
-                        container.id = name;
-                        container.classList = ["test-items"];
-                        container.setAttribute("onclick","loadTest('math')");
+            .then(response => response.json())
+            .then(data => {
+                const questionElement = document.getElementById('test-selection');
+                data.forEach(name => {
+                    const container = document.createElement('div');
+                    container.id = name;
+                    container.classList = ["test-items"];
+                    container.setAttribute("onclick","loadTest('math')");
 
-                        const img = document.createElement('img');
-                        img.src = `assets/${name}.svg`;
+                    const img = document.createElement('img');
+                    img.src = `assets/${name}.svg`;
 
-                        const label = document.createElement('span');
-                        label.textContent = name;
+                    const label = document.createElement('span');
+                    label.textContent = name;
 
-                        container.appendChild(img);
-                        container.appendChild(label);
+                    container.appendChild(img);
+                    container.appendChild(label);
 
-                        questionElement.appendChild(container);
-                    });
-                })
-                .catch(error => console.error('Error fetching test data:', error));
+                    questionElement.appendChild(container);
+                });
+            })
+            .catch(error => console.error('Error fetching test data:', error));
         </script>
     </div>
 
